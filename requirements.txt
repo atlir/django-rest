@@ -1,0 +1,9 @@
+Django==1.10
+djangorestframework
+var_dump
+python-social-auth
+oauth2client
+oauth2_provider
+django-bower
+django-oauth-toolkit
+google-api-python-client

@@ -1,0 +1,64 @@
+
+<div class="container">
+
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#" ng-if="$ctrl.showUser">Hi, {{ user.username }}</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li ng-if="!$ctrl.showUser" ng-click="$ctrl.login()"><a href="#">Login</a></li>
+                    <li ng-if="$ctrl.showUser" ng-click="$ctrl.logout()"><a href="#">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid" ng-if="$ctrl.showUser" id="accordion">
+
+        <div class="loader" ng-if="!$ctrl.loaded"></div>
+        <uib-accordion close-others="true" template-url="static/js/templates/accordion/accordion.html">
+            <div uib-accordion-group ng-if="$ctrl.threads != 0" ng-repeat="thread in $ctrl.threads" class="panel-default" template-url="static/js/templates/accordion/group-template.html">
+                <uib-accordion-heading ng-if="thread.subject">
+                    {{ thread.subject }} <span class="badge">{{ thread.emails.length }}</span>
+                </uib-accordion-heading>
+                <uib-accordion-heading ng-if="!thread.subject">
+                    No subject
+                </uib-accordion-heading>
+                <ul class="list-group">
+                    <li class="list-group-item" ng-if="thread.emails != 0" ng-repeat="email in thread.emails">
+                        {{ email.snippet }}
+                        <span class="label label-primary">{{ email.from }}</span>
+                        | <span class="label label-primary">{{ email.to }}</span>
+                        | <span class="label label-info">{{ email.date }}</span>
+                    </li>
+                </ul>
+            </div>
+        </uib-accordion>
+
+        <nav>
+            <ul class="pager">
+                <li class="previous" ng-if="$ctrl.prevPageTokens.length > 1 && $ctrl.threads != 0">
+                    <a href="#" ng-click="$ctrl.getThreads('back')">
+                        <span aria-hidden="true">&larr;</span> Prev page
+                    </a>
+                </li>
+                <li class="next" ng-if="$ctrl.nextPageToken && $ctrl.threads != 0">
+                    <a href="#" ng-click="$ctrl.getThreads('next')">Next page
+                        <span aria-hidden="true">&rarr;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>

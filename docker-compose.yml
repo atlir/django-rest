@@ -1,0 +1,9 @@
+ version: '2'
+ services:
+   web:
+     build: .
+     command: python3 gmail/manage.py runserver 0.0.0.0:80
+     volumes:
+       - .:/gmail
+     ports:
+       - "80:80"

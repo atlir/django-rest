@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="gmailApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Gmail</title>
+
+    <script src="https://apis.google.com/js/api:client.js"></script>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'bootstrap/dist/css/bootstrap.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/app.css' %}" />
+
+    <script src="{% static 'jquery/dist/jquery.js' %}"></script>
+    <script src="{% static 'angular/angular.js' %}"></script>
+    <script src="{% static 'angular-resource/angular-resource.js' %}"></script>
+    <script src="{% static 'angular-route/angular-route.js' %}"></script>
+    <script src="{% static 'angular-animate/angular-animate.js' %}"></script>
+    <script src="{% static 'angular-bootstrap/ui-bootstrap.js' %}"></script>
+    <script src="{% static 'angular-local-storage/dist/angular-local-storage.min.js' %}"></script>
+    <script src="{% static 'js/module.js' %}"></script>
+    <script src="{% static 'js/services/auth.service.js' %}"></script>
+    <script src="{% static 'js/services/threads.service.js' %}"></script>
+    <script src="{% static 'js/controllers/component.js' %}"></script>
+
+</head>
+<body>
+    <div class="view-container">
+        <app-component></app-component>
+    </div>
+</body>
+</html>
